@@ -1,8 +1,13 @@
 class Conversion:
     def celsius_a_fahrenheit(self, celsius):
+        farenheit= (celsius * 9/5)+32
+        return farenheit
+
+
+
         """
         Convierte temperatura de Celsius a Fahrenheit.
-        
+        celsius
         Args:
             celsius (float): Temperatura en grados Celsius
             
@@ -15,9 +20,11 @@ class Conversion:
             celsius_a_fahrenheit(0) -> 32.0
             celsius_a_fahrenheit(100) -> 212.0
         """
-        pass
+        
     
     def fahrenheit_a_celsius(self, fahrenheit):
+        celsiuss= (fahrenheit -32)*5/9
+        return celsiuss
         """
         Convierte temperatura de Fahrenheit a Celsius.
         
@@ -33,9 +40,11 @@ class Conversion:
             fahrenheit_a_celsius(32) -> 0.0
             fahrenheit_a_celsius(212) -> 100.0
         """
-        pass
+        
     
     def metros_a_pies(self, metros):
+        pies= metros* 3.28084
+        return pies
         """
         Convierte distancia de metros a pies.
         
@@ -50,9 +59,11 @@ class Conversion:
         Ejemplo:
             metros_a_pies(1) -> 3.28084
         """
-        pass
+        
     
     def pies_a_metros(self, pies):
+        metros= pies*0.3048
+        return metros
         """
         Convierte distancia de pies a metros.
         
@@ -67,9 +78,11 @@ class Conversion:
         Ejemplo:
             pies_a_metros(3.28084) -> 1.0
         """
-        pass
+        
     
     def decimal_a_binario(self, decimal):
+        Binario=bin(decimal)
+        return Binario
         """
         Convierte un número decimal a su representación binaria.
         
@@ -83,9 +96,11 @@ class Conversion:
             decimal_a_binario(10) -> "1010"
             decimal_a_binario(255) -> "11111111"
         """
-        pass
+        
     
     def binario_a_decimal(self, binario):
+        decimal = str(int(binario, 2))
+        return decimal
         """
         Convierte un número binario a decimal.
         
@@ -102,6 +117,30 @@ class Conversion:
         pass
     
     def decimal_a_romano(self, numero):
+    
+        val = [
+        1000, 900, 500, 400,
+        100, 90, 50, 40,
+        10, 9, 5, 4,
+        1
+        ]
+        syb = [
+        "M", "CM", "D", "CD",
+        "C", "XC", "L", "XL",
+        "X", "IX", "V", "IV",
+        "I"
+        ]
+    
+        roman_num = ''
+        i = 0
+        while  num > 0:
+            for _ in range(num // val[i]):
+                roman_num += syb[i]
+                num -= val[i]
+        i += 1
+
+        return roman_num
+
         """
         Convierte un número decimal a numeración romana.
         
@@ -115,23 +154,35 @@ class Conversion:
             decimal_a_romano(9) -> "IX"
             decimal_a_romano(1994) -> "MCMXCIV"
         """
-        pass
+        
     
     def romano_a_decimal(self, romano):
-        """
-        Convierte un número romano a decimal.
+        valores = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        total = 0
+        previo = 0
         
-        Args:
-            romano (str): Número romano válido
+        for char in reversed(romano):
+            actual = valores[char]
+            if actual >= previo:
+                total += actual
+            else:
+                total -= actual
+            previo = actual
+        return total
+    """
+    Convierte un número romano a decimal.
+        
+    Args:
+    romano (str): Número romano válido
             
-        Returns:
-            int: Número decimal
+    Returns:
+    int: Número decimal
             
-        Ejemplo:
-            romano_a_decimal("IX") -> 9
-            romano_a_decimal("MCMXCIV") -> 1994
-        """
-        pass
+    Ejemplo:
+    romano_a_decimal("IX") -> 9
+    romano_a_decimal("MCMXCIV") -> 1994
+    """
+      
     
     def texto_a_morse(self, texto):
         """
