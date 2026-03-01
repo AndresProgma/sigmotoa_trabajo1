@@ -185,6 +185,27 @@ class Conversion:
       
     
     def texto_a_morse(self, texto):
+        morse = {
+            'A': '.-',    'B': '-...',  'C': '-.-.',  'D': '-..',
+            'E': '.',     'F': '..-.',  'G': '--.',   'H': '....',
+            'I': '..',    'J': '.---',  'K': '-.-',   'L': '.-..',
+            'M': '--',    'N': '-.',    'O': '---',   'P': '.--.',
+            'Q': '--.-',  'R': '.-.',   'S': '...',
+            'T': '-',     'U': '..-',   'V': '...-',  'W': '.--',
+            'X': '-..-',  'Y': '-.--',  'Z': '--..',
+            '0': '-----', '1': '.----', '2': '..---',
+            '3': '...--', '4': '....-', '5': '.....',
+            '6': '-....', '7': '--...',
+            '8': '---..', '9': '----.'
+        }
+
+        Resultado= []
+
+        for letra in texto.upper():
+            if letra in morse:
+                Resultado.append(morse[letra])
+        return"".join(Resultado)
+
         """
         Convierte texto a código Morse.
         
@@ -201,17 +222,41 @@ class Conversion:
         
     
     def morse_a_texto(self, morse):
-        """
-        Convierte código Morse a texto.
+    
+        diccionario = {
+            '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D',
+            '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H',
+            '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L',
+            '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P',
+            '--.-': 'Q', '.-.': 'R', '...': 'S',
+            '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W',
+            '-..-': 'X', '-.--': 'Y', '--..': 'Z',
+            '-----': '0', '.----': '1', '..---': '2',
+            '...--': '3', '....-': '4', '.....': '5',
+            '-....': '6', '--...': '7',
+            '---..': '8', '----.': '9'
+        }
+
+        Resultado=[]
+        letras_morse = morse.split()
+
+        for simbolo in letras_morse:
+            if simbolo in diccionario:
+                Resultado.append(diccionario[simbolo])
+
+        return "".join(Resultado)
+
+    """
+    Convierte código Morse a texto.
         
-        Args:
-            morse (str): Código Morse separado por espacios
+    Args:
+    morse (str): Código Morse separado por espacios
             
-        Returns:
-            str: Texto decodificado
+    Returns:
+    str: Texto decodificado
             
-        Ejemplo:
-            morse_a_texto("... --- ...") -> "SOS"
-            morse_a_texto(".... . .-.. .-.. ---") -> "HELLO"
-        """
-        
+    Ejemplo:
+    morse_a_texto("... --- ...") -> "SOS"
+    morse_a_texto(".... . .-.. .-.. ---") -> "HELLO"
+    """
+    
