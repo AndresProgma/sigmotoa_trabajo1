@@ -5,6 +5,8 @@ class Data:
     """
     
     def invertir_lista(self, lista):
+
+
         """
         Invierte el orden de los elementos en una lista sin usar reversed() o lista[::-1].
         
@@ -14,9 +16,22 @@ class Data:
         Returns:
             list: Lista con los elementos en orden inverso
         """
-        pass
+        lista_invertida = []
+
+        for i in range(len(lista) - 1, -1, -1):
+            lista_invertida.append(lista[i])
+
+        return lista_invertida
+        
     
     def buscar_elemento(self, lista, elemento):
+
+        for i in range(len(lista)):
+            if lista[i] == elemento:
+                return i
+            
+        return -1
+
         """
         Busca un elemento en una lista y devuelve su índice (o -1 si no existe).
         Implementación manual sin usar index().
@@ -28,9 +43,15 @@ class Data:
         Returns:
             int: Índice del elemento o -1 si no se encuentra
         """
-        pass
+        
     
     def eliminar_duplicados(self, lista):
+        lista_nueva= []
+
+        for elemento in lista:
+            if elemento not in lista_nueva:
+                lista_nueva.append(elemento)
+        return lista_nueva
         """
         Elimina elementos duplicados de una lista sin usar set().
         Mantiene el orden original de aparición.
@@ -41,9 +62,24 @@ class Data:
         Returns:
             list: Lista sin elementos duplicados
         """
-        pass
+        
     
     def merge_ordenado(self, lista1, lista2):
+        
+        lista3 = lista1 + lista2
+
+        
+        for i in range(len(lista3)):
+            for j in range(0, len(lista3) - i - 1):
+                if lista3[j] > lista3[j + 1]:
+                    
+                    lista3[j], lista3[j + 1] = lista3[j + 1], lista3[j]
+
+       
+        return lista3
+
+
+
         """
         Combina dos listas ordenadas en una sola lista ordenada.
         
@@ -54,9 +90,23 @@ class Data:
         Returns:
             list: Lista combinada y ordenada
         """
-        pass
+    
     
     def rotar_lista(self, lista, k):
+
+       
+        n = len(lista)
+        
+        if n == 0:
+            return lista
+        
+        k = k % n
+        
+        for _ in range(k):
+            ultimo = lista.pop()
+            lista.insert(0, ultimo)
+        
+        return lista
         """
         Rota los elementos de una lista k posiciones a la derecha.
         
@@ -67,9 +117,14 @@ class Data:
         Returns:
             list: Lista rotada
         """
-        pass
+        
     
     def encuentra_numero_faltante(self, lista):
+        n = len(lista) + 1
+        suma_esperada = n * (n + 1) // 2
+        suma_real = sum(lista)
+            
+        return suma_esperada - suma_real
         """
         Encuentra el número faltante en una lista de enteros del 1 al n.
         
@@ -79,7 +134,7 @@ class Data:
         Returns:
             int: El número que falta en la secuencia
         """
-        pass
+        
     
     def es_subconjunto(self, conjunto1, conjunto2):
         """
