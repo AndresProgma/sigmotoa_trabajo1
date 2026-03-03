@@ -137,6 +137,14 @@ class Data:
         
     
     def es_subconjunto(self, conjunto1, conjunto2):
+        for elemento in conjunto1:
+        
+        
+            if elemento not in conjunto2:
+                return False  
+    
+    
+        return True
         """
         Verifica si conjunto1 es subconjunto de conjunto2 sin usar set.
         
@@ -147,7 +155,7 @@ class Data:
         Returns:
             bool: True si conjunto1 es subconjunto de conjunto2, False en caso contrario
         """
-        pass
+        
     
     def implementar_pila(self):
         """
@@ -156,7 +164,7 @@ class Data:
         Returns:
             dict: Diccionario con métodos push, pop, peek y is_empty
         """
-        pass
+        
     
     def implementar_cola(self):
         """
@@ -165,7 +173,7 @@ class Data:
         Returns:
             dict: Diccionario con métodos enqueue, dequeue, peek y is_empty
         """
-        pass
+        
     
     def matriz_transpuesta(self, matriz):
         """
@@ -177,4 +185,4 @@ class Data:
         Returns:
             list: Matriz transpuesta
         """
-        pass
+        
