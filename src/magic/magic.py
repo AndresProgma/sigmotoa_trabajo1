@@ -14,7 +14,15 @@ class Magic:
         Returns:
             int: El n-ésimo número de Fibonacci
         """
-        pass
+        a = 0
+        b = 1
+
+        for i in range(n):
+            temp = a + b
+            a = b
+            b = temp
+
+        return a
     
     def secuencia_fibonacci(self, n):
         """
@@ -26,7 +34,17 @@ class Magic:
         Returns:
             list: Lista con los primeros n números de Fibonacci
         """
-        pass
+        lista = []
+        a = 0
+        b = 1
+
+        for i in range(n):
+            lista.append(a)
+            temp = a + b
+            a = b
+            b = temp
+
+        return lista
     
     def es_primo(self, n):
         """
@@ -38,7 +56,14 @@ class Magic:
         Returns:
             bool: True si n es primo, False en caso contrario
         """
-        pass
+        if n <= 1:
+            return False
+
+        for i in range(2, n):
+            if n % i == 0:
+                return False
+
+        return True
     
     def generar_primos(self, n):
         """
@@ -50,7 +75,13 @@ class Magic:
         Returns:
             list: Lista de números primos hasta n
         """
-        pass
+        primos = []
+
+        for i in range(2, n + 1):
+            if self.es_primo(i):
+                primos.append(i)
+
+        return primos
     
     def es_numero_perfecto(self, n):
         """
@@ -62,7 +93,13 @@ class Magic:
         Returns:
             bool: True si n es un número perfecto, False en caso contrario
         """
-        pass
+        suma = 0
+
+        for i in range(1, n):
+            if n % i == 0:
+                suma += i
+
+        return suma == n
     
     def triangulo_pascal(self, filas):
         """
@@ -74,7 +111,17 @@ class Magic:
         Returns:
             list: Lista de listas que representa el triángulo de Pascal
         """
-        pass
+        triangulo = []
+
+        for i in range(filas):
+            fila = [1] * (i + 1)
+
+            for j in range(1, i):
+                fila[j] = triangulo[i-1][j-1] + triangulo[i-1][j]
+
+            triangulo.append(fila)
+
+        return triangulo
     
     def factorial(self, n):
         """
@@ -86,7 +133,12 @@ class Magic:
         Returns:
             int: El factorial de n
         """
-        pass
+        resultado = 1
+
+        for i in range(1, n + 1):
+            resultado *= i
+
+        return resultado
     
     def mcd(self, a, b):
         """
@@ -99,7 +151,12 @@ class Magic:
         Returns:
             int: El máximo común divisor de a y b
         """
-        pass
+        while b != 0:
+            temp = b
+            b = a % b
+            a = temp
+
+        return a
     
     def mcm(self, a, b):
         """
@@ -112,7 +169,7 @@ class Magic:
         Returns:
             int: El mínimo común múltiplo de a y b
         """
-        pass
+        return (a * b) // self.mcd(a, b)
     
     def suma_digitos(self, n):
         """
@@ -124,7 +181,12 @@ class Magic:
         Returns:
             int: La suma de los dígitos de n
         """
-        pass
+        suma = 0
+
+        for digito in str(n):
+            suma += int(digito)
+
+        return suma
     
     def es_numero_armstrong(self, n):
         """
@@ -136,7 +198,14 @@ class Magic:
         Returns:
             bool: True si n es un número de Armstrong, False en caso contrario
         """
-        pass
+        digitos = str(n)
+        potencia = len(digitos)
+        suma = 0
+
+        for d in digitos:
+            suma += int(d) ** potencia
+
+        return suma == n
     
     def es_cuadrado_magico(self, matriz):
         """
@@ -148,4 +217,28 @@ class Magic:
         Returns:
             bool: True si es un cuadrado mágico, False en caso contrario
         """
-        pass
+        n = len(matriz)
+        suma_objetivo = sum(matriz[0])
+
+        for fila in matriz:
+            if sum(fila) != suma_objetivo:
+                return False
+
+        for col in range(n):
+            suma = 0
+            for fila in range(n):
+                suma += matriz[fila][col]
+            if suma != suma_objetivo:
+                return False
+
+        diag1 = 0
+        diag2 = 0
+
+        for i in range(n):
+            diag1 += matriz[i][i]
+            diag2 += matriz[i][n-i-1]
+
+        if diag1 != suma_objetivo or diag2 != suma_objetivo:
+            return False
+
+        return True

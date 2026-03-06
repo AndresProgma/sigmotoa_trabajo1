@@ -12,7 +12,10 @@ class Stats:
         Ejemplo:
             promedio([1, 2, 3, 4, 5]) -> 3.0
         """
-        pass
+        suma = 0
+        for n in numeros:
+            suma += n
+        return suma / len(numeros)
     
     def mediana(self, numeros):
         """
@@ -29,7 +32,15 @@ class Stats:
             mediana([1, 2, 3, 4, 5]) -> 3.0
             mediana([1, 2, 3, 4]) -> 2.5
         """
-        pass
+        nums = sorted(numeros)
+        n = len(nums)
+
+        if n % 2 == 1:
+            return nums[n // 2]
+        else:
+            medio1 = nums[n // 2 - 1]
+            medio2 = nums[n // 2]
+            return (medio1 + medio2) / 2
     
     def moda(self, numeros):
         """
@@ -45,7 +56,22 @@ class Stats:
         Ejemplo:
             moda([1, 2, 2, 3, 3, 3]) -> 3
         """
-        pass
+        frecuencias = {}
+        for n in numeros:
+            if n in frecuencias:
+                frecuencias[n] += 1
+            else:
+                frecuencias[n] = 1
+
+        max_frec = 0
+        moda = None
+
+        for num in frecuencias:
+            if frecuencias[num] > max_frec:
+                max_frec = frecuencias[num]
+                moda = num
+
+        return moda
     
     def desviacion_estandar(self, numeros):
         """
@@ -61,7 +87,15 @@ class Stats:
         Ejemplo:
             desviacion_estandar([1, 2, 3, 4, 5]) -> 1.41...
         """
-        pass
+        media = self.promedio(numeros)
+
+        suma = 0
+        for n in numeros:
+            suma += (n - media) ** 2
+
+        varianza = suma / len(numeros)
+
+        return varianza ** 0.5
     
     def varianza(self, numeros):
         """
@@ -77,7 +111,13 @@ class Stats:
         Ejemplo:
             varianza([1, 2, 3, 4, 5]) -> 2.0
         """
-        pass
+        media = self.promedio(numeros)
+
+        suma = 0
+        for n in numeros:
+            suma += (n - media) ** 2
+
+        return suma / len(numeros)
     
     def rango(self, numeros):
         """
@@ -92,4 +132,4 @@ class Stats:
         Ejemplo:
             rango([1, 5, 3, 9, 2]) -> 8
         """
-        pass
+        return max(numeros) - min(numeros)
